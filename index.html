@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Test GTM Site</title>
+  <title>My Test GTM Store</title>
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Welcome to My Test Store</h1>
-    <p>Click below to see our product:</p>
-    <a href="product.html"><button>View Product</button></a>
+    <p>Click the product image to see details:</p>
+
+    <!-- Clickable product image -->
+    <a href="product.html" id="product-link">
+      <img src="watch.jpg" alt="Awesome Product" class="product-image">
+    </a>
   </div>
+
+  <script>
+    // Homepage view
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ event: 'pageview', page_path: '/' });
+
+    // Track product image click
+    document.getElementById("product-link").addEventListener("click", function() {
+      dataLayer.push({
+        event: 'view_product',
+        product_name: 'Awesome Product',
+        price: 49.99
+      });
+    });
+  </script>
 </body>
 </html>
-
